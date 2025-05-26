@@ -11,7 +11,9 @@ export const TextProvider = ({
   value: string;
   children: React.ReactNode;
 }) => (
-  <TextClassContext.Provider value={value}>{children}</TextClassContext.Provider>
+  <TextClassContext.Provider value={value}>
+    {children}
+  </TextClassContext.Provider>
 );
 
 export const useTextClass = () => useContext(TextClassContext);
@@ -22,12 +24,20 @@ type TextProps = RNTextProps & {
 };
 
 const Text = React.forwardRef<RNText, TextProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, style, ...props }, ref) => {
     const contextClass = useTextClass();
-    // Ưu tiên className truyền vào, nếu không có thì lấy từ context, nếu không có nữa thì lấy mặc định
-    const mergedClass =
-      className ?? contextClass ?? "text-base text-light-foreground dark:text-dark-foreground";
-    return <RNText className={mergedClass} ref={ref} {...props} />;
+    // Ưu tiên className truyền vào, nếu không thì dùng context, nếu không có thì default
+    const mergedClass = className ?? contextClass ?? 'text-base';
+
+    return (
+      <RNText
+        // className giờ đây được NativeWind tự xử lý
+        className={mergedClass}
+        style={style}
+        ref={ref}
+        {...props}
+      />
+    );
   }
 );
 Text.displayName = 'Text';

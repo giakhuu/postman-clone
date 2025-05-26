@@ -1,37 +1,85 @@
 import React from "react";
 import { Animated, Pressable } from "react-native";
+import { TextProvider } from "./Text";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> & {
   variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'black';
+  size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   className?: string;
 };
 
 
 
-const baseClassNames =  "px-4 py-2 rounded"
-const variantButton = {
-    default: "bg-primary",
-    destructive: "bg-red-500 text-white",
-    outline: "border border-gray-300 bg-white text-gray-800",
-    secondary: "bg-gray-200 text-gray-800",
-    ghost: "bg-transparent text-gray-800",
-    link: "text-blue-500 underline",
-    black: "bg-black text-white"
-}
+const baseButtonClass = "rounded"
+const baseTextClass = "text-background"
+
+const sizeStyles = {
+  sm: "px-2 py-1",
+  md: "px-4 py-2",
+  lg: "px-6 py-3",
+};
+
+const sizeTextStyles = {
+  sm: "text-sm",
+  md: "text-base",
+  lg: "text-lg",
+};
+
+const variantStyles = {
+  default: {
+    button: "bg-primary",
+    text: "text-background",
+  },
+  destructive: {
+    button: "bg-red-500",
+    text: "text-white",
+  },
+  outline: {
+    button: "border border-gray-300 bg-white",
+    text: "text-gray-800",
+  },
+  secondary: {
+    button: "bg-gray-200",
+    text: "text-gray-800",
+  },
+    ghost: {
+    button: "bg-transparent",
+    text: "text-gray-800",
+  },
+  link: {
+    button: "",
+    text: "text-blue-500 underline",
+  },
+  black: {
+    button: "bg-black",
+    text: "text-white",
+  },
+};
 
 const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
-  ({ className = "" , variant = 'default', disabled = false, ...props }, ref) => {
-    const mergedClassName = `${baseClassNames} ${className}`;
+  ({ className = "" , variant = 'default', size = 'md', disabled = false, ...props }, ref) => {
+    const mergedClassNameButton = `
+          ${baseButtonClass} 
+          ${variantStyles[variant].button} 
+          ${sizeStyles[size]} 
+          ${className}`;
+    const mergedClassNameText = `
+          ${baseTextClass} 
+          ${variantStyles[variant].text} 
+          ${sizeTextStyles[size]}`;
     return (
-    <AnimatedPressable
-      ref={ref}
-      className={mergedClassName}
-      disabled={disabled}
-      {...props}
-    />
+      <TextProvider value={mergedClassNameText}>
+        <AnimatedPressable
+          ref={ref}
+          className={mergedClassNameButton}
+          disabled={disabled}
+          {...props}
+        >
+        </AnimatedPressable>
+      </TextProvider>
   );
 });
 

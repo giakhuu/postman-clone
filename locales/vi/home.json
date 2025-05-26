@@ -1,0 +1,12 @@
+{
+    "action": {
+        "newRequest": "Yêu cầu mới",
+        "import": "Nhập khẩu",
+        "browseApis": "Duyệt API",
+        "history": "Lịch sử"
+    },
+    "header": {
+        "welcome": "Chào mừng đến với bản sao Postman",
+        "subText": "Bắt đầu khám phá các API trên thiết bị di động của bạn"
+    }
+}

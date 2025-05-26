@@ -23,6 +23,7 @@
   --border: 235 235 235;
   --input: 212 212 212;
   --ring: 235 235 235;
+  --muted-foreground: 102 102 102;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,6 +47,7 @@
     --border: 59 59 59;
     --input: 71 71 71;
     --ring: 59 59 59;
+    --muted-foreground: 196 196 196; 
   }
 }
 }

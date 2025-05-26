@@ -1,0 +1,12 @@
+{
+    "action": {
+        "newRequest": "New Request",
+        "import": "Import",
+        "browseApis": "Browse APIs",
+        "history": "History"
+    },
+    "header": {
+        "welcome": "Welcome to Postman clone",
+        "description": "Start exploring APIs on your mobile device"
+    }
+}

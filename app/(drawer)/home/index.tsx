@@ -1,14 +1,14 @@
-import Button from '@/components/ui/Button'
+import { Text } from '@/components/ui'
 import React from 'react'
-import { Text, View } from 'react-native'
-
+import { useTranslation } from 'react-i18next'
+import { View } from 'react-native'
 const index = () => {
+  const { t } = useTranslation('home')
+
   return (
     <View className='flex-1 items-center justify-center bg-background'>
-      <Text>Home</Text>
-      <Button>
-        <Text>Click Me</Text>
-      </Button>
+      <Text className='text-xl font-semibold'>{t('header.welcome')}</Text>
+      <Text className='text-muted-foreground'>{t('header.description')}</Text>
     </View>
   )
 }
