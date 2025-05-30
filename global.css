@@ -4,7 +4,7 @@
 
 @layer base {
 :root {
-  --background: 242 242 242;
+  --background: 255 255 255;
   --foreground: 9 9 9;
   --card: 251 251 251;
   --card-foreground: 15 15 15;
@@ -15,7 +15,7 @@
   --secondary: 249 249 249;
   --secondary-foreground: 51 51 51;
   --muted: 209 209 209;
-  --muted-foreground: 102 102 102;
+  --muted-foreground: 192 192 192;
   --accent: 249 249 249;
   --accent-foreground: 51 51 51;
   --destructive: 255 56 43;
@@ -23,7 +23,6 @@
   --border: 235 235 235;
   --input: 212 212 212;
   --ring: 235 235 235;
-  --muted-foreground: 102 102 102;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,12 +33,12 @@
     --card-foreground: 246 246 246;
     --popover: 38 38 38;
     --popover-foreground: 246 246 246;
-    --primary: 143 143 143;
+    --primary: 255 255 255;
     --primary-foreground: 0 0 0;
     --secondary: 249 249 249;
     --secondary-foreground: 51 51 51;
     --muted: 94 94 94;
-    --muted-foreground: 196 196 196;
+    --muted-foreground: 140 140 140;
     --accent: 249 249 249;
     --accent-foreground: 51 51 51;
     --destructive: 254 67 54;
@@ -47,7 +46,6 @@
     --border: 59 59 59;
     --input: 71 71 71;
     --ring: 59 59 59;
-    --muted-foreground: 196 196 196; 
   }
 }
 }

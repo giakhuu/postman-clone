@@ -8,5 +8,10 @@
     "header": {
         "welcome": "Welcome to Postman clone",
         "description": "Start exploring APIs on your mobile device"
-    }
+    },
+    "button": {
+        "create_new_req": "Create a new request",
+        "learnMore": "Learn More"
+    },
+    "quickTip": "Swipe left or right on a tab to quickly switch between requests. Long press on a request in collections to see more options."
 }

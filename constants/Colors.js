@@ -1,41 +1,37 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+// theme/colors.ts
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+export const lightColors = {
+  background: 'rgb(255,255,255)',
+  foreground: 'rgb(9,9,9)',
+  card: 'rgb(251,251,251)',
+  cardForeground: 'rgb(15,15,15)',
+  primary: 'rgb(0,0,0)',
+  primaryForeground: 'rgb(247,247,247)',
+  secondary: 'rgb(249,249,249)',
+  secondaryForeground: 'rgb(51,51,51)',
+  muted: 'rgb(209,209,209)',
+  mutedForeground: 'rgb(102,102,102)',
+  destructive: 'rgb(255,56,43)',
+  destructiveForeground: 'rgb(255,255,255)',
+  border: 'rgb(235,235,235)',
+  input: 'rgb(212,212,212)',
+  ring: 'rgb(235,235,235)',
+};
 
-
-module.exports = {
-white: 'rgb(255, 255, 255)',
-black: 'rgb(0, 0, 0)',
-light: {
-  grey6: 'rgb(247, 247, 247)',
-  grey5: 'rgb(242, 242, 242)',
-  grey4: 'rgb(237, 237, 237)',
-  grey3: 'rgb(235, 235, 235)',
-  grey2: 'rgb(232, 232, 232)',
-  grey: 'rgb(230, 230, 230)',
-  background: 'rgb(250, 250, 250)',
-  foreground: 'rgb(28, 28, 28)',
-  root: 'rgb(250, 250, 250)',
-  card: 'rgb(250, 250, 250)',
-  destructive: 'rgb(186, 26, 26)',
-  primary: 'rgb(0, 0, 0)',
-},
-dark: {
-  grey6: 'rgb(26, 26, 26)',
-  grey5: 'rgb(33, 33, 33)',
-  grey4: 'rgb(38, 38, 38)',
-  grey3: 'rgb(43, 43, 43)',
-  grey2: 'rgb(46, 46, 46)',
-  grey: 'rgb(51, 51, 51)',
-  background: 'rgb(27, 27, 27)',
-  foreground: 'rgb(227, 227, 227)',
-  root: 'rgb(27, 27, 27)',
-  card: 'rgb(27, 27, 27)',
-  destructive: 'rgb(147, 0, 10)',
-  primary: 'rgb(143, 143, 143)',
-},
-} 
+export const darkColors = {
+  background: 'rgb(5,5,5)',
+  foreground: 'rgb(246,246,246)',
+  card: 'rgb(26,26,26)',
+  cardForeground: 'rgb(246,246,246)',
+  primary: 'rgb(143,143,143)',
+  primaryForeground: 'rgb(0,0,0)',
+  secondary: 'rgb(249,249,249)',
+  secondaryForeground: 'rgb(51,51,51)',
+  muted: 'rgb(94,94,94)',
+  mutedForeground: 'rgb(196,196,196)',
+  destructive: 'rgb(254,67,54)',
+  destructiveForeground: 'rgb(255,255,255)',
+  border: 'rgb(59,59,59)',
+  input: 'rgb(71,71,71)',
+  ring: 'rgb(59,59,59)',
+};

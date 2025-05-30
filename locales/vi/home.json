@@ -8,5 +8,10 @@
     "header": {
         "welcome": "Chào mừng đến với bản sao Postman",
         "subText": "Bắt đầu khám phá các API trên thiết bị di động của bạn"
-    }
+    },
+    "button": {
+        "create_new_req": "Tạo yêu cầu mới",
+        "learnMore": "Tìm hiểu thêm"
+    },
+    "quickTip": "Vuốt sang trái hoặc phải trên một tab để nhanh chóng chuyển đổi giữa các yêu cầu. Nhấn và giữ vào một yêu cầu trong bộ sưu tập để xem thêm tùy chọn."
 }
