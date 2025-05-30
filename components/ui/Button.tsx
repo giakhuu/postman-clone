@@ -27,8 +27,8 @@ const sizeStyles = {
 
 const sizeTextStyles = {
   sm: "text-sm",
-  md: "text-base",
-  lg: "text-lg",
+  md: "text-lg",
+  lg: "text-xl",
 };
 
 const variantStyles = {
@@ -52,9 +52,9 @@ const variantStyles = {
     text: "text-gray-800",
     icon: "primary",
   },
-    ghost: {
+  ghost: {
     button: "bg-transparent",
-    text: "text-gray-800",
+    text: "text-primary",
     icon: "primary",
   },
   link: {

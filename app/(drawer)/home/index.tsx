@@ -3,8 +3,8 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { View } from 'react-native'
 
-import { QuickTip } from '@/components/molecules/ActionTitle/QuickTip'
-import { ActionGrid } from '@/components/organism/ActionGrid'
+import { QuickTip } from '@/components/molecules/Tips/QuickTip'
+import { ActionGrid } from '@/components/organism/grid/ActionGrid'
 import { Button, Icon, Text } from '@/components/ui'
 const index = () => {
   const { t } = useTranslation('home')

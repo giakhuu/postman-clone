@@ -24,7 +24,7 @@ export const useIconContext = () => useContext(IconContext);
 import { useThemeColors } from "@/hooks/theme/useThemeColors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-type IconProps = React.ComponentProps<typeof AntDesign> & {
+export type IconProps = React.ComponentProps<typeof AntDesign> & {
   as?: React.ElementType;
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { ActionTitle } from "../molecules/ActionTitle/ActionTitle";
+import { ActionTitle } from "../../molecules/Action/ActionTitle";
 
 type ActionItem = {
   key: string;
