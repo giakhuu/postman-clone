@@ -1,0 +1,11 @@
+{
+    "section": {
+        "collection": "COLLECTION",
+        "navigation": "NAVIGAITON"
+    },
+    "navigation": {
+        "evironment": "Environment",
+        "history": "History",
+        "API": "APIs"
+    }
+}

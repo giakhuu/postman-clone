@@ -1,0 +1,11 @@
+{
+    "section": {
+        "collection": "BỘ SƯU TẬP",
+        "navigation": "ĐIỀU HƯỚNG"
+    },
+    "navigation": {
+        "evironment": "Môi trường",
+        "history": "Lịch sử",
+        "API": "Các API"
+    }
+}

@@ -7,8 +7,6 @@ import React from 'react';
 
 const Layout = () => {
   const colors = useThemeColors();
-
-
   return (
     <Drawer
       drawerContent={(props) => <CustomDrawerContent {...props}/>}

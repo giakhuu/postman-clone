@@ -1,5 +1,8 @@
 {
   "expo": {
+    "fonts": [
+      "./assets/fonts/RobotoMono-Regular.ttf"
+    ],
     "name": "MyProject",
     "slug": "MyProject",
     "version": "1.0.0",
@@ -33,7 +36,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

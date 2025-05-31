@@ -28,6 +28,9 @@ module.exports = {
         input: 'rgb(var(--input) / <alpha-value>)',
         ring: 'rgb(var(--ring) / <alpha-value>)',
       },
+      fontFamily: {
+        mono: ['Roboto-Medium', 'monospace'],
+      },
     },
   },
   plugins: [],

@@ -28,7 +28,7 @@ const Text = React.forwardRef<RNText, TextProps>(
   ({ className, style, ...props }, ref) => {
     const contextClass = useTextClass();
     // Ưu tiên className truyền vào, nếu không thì dùng context, nếu không có thì default
-    const mergedClass = twMerge('text-primary', className, contextClass);
+    const mergedClass = twMerge('text-primary text-xl font-mono', className, contextClass);
     
     return (
       <RNText

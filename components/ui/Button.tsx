@@ -31,6 +31,12 @@ const sizeTextStyles = {
   lg: "text-xl",
 };
 
+const sizeIconStyles = {
+  sm: 18,
+  md: 24,
+  lg: 32,
+};
+
 const variantStyles = {
   default: {
     button: "bg-primary",
@@ -98,7 +104,7 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
     
     return (
       <TextProvider value={mergedClassNameText}>
-        <IconProvider value={{ color: colors[variantStyles[variant].icon as keyof typeof colors], size: 24 }}>
+        <IconProvider value={{ color: colors[variantStyles[variant].icon as keyof typeof colors], size: sizeIconStyles[size] }}>
         <AnimatedPressable
           ref={ref}
           className={mergedClassNameButton}
