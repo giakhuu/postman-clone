@@ -1,7 +1,7 @@
 
 import { CustomDrawerContent, HeaderRight } from '@/components/layout';
 import { Icon } from '@/components/ui';
-import { useThemeColors } from '@/hooks/theme/useThemeColors';
+import { useThemeColors } from '@/hooks/useThemeColors';
 import Drawer from 'expo-router/drawer';
 import React from 'react';
 

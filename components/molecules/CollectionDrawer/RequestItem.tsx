@@ -1,19 +1,43 @@
-import { Text } from '@/components/ui'
-import { HttpMethod } from '@/lib/enum/HttpMethod'
-import React from 'react'
-import { View } from 'react-native'
-import Tag from '../Request/Tag'
-import { RequestType } from './CollectionList'
+import { Button, Text } from '@/components/ui';
+import { useTabStore } from '@/hooks/useTabStore';
+import { HttpMethod } from '@/lib/enum/HttpMethod';
+import { HttpRequest } from '@/model/request/Request';
+import { useRouter } from 'expo-router'; // Thêm dòng này
+import React from 'react';
+import Tag from '../Request/Tag';
 
 interface RequestItemProps {
-  request: RequestType
+  request: HttpRequest
 }
 
-const RequestItem: React.FC<RequestItemProps> = ({ request }) => (
-  <View className="flex-row items-center py-1">
-    <Tag method={request.method as HttpMethod} />
-    <Text className='text-lg ml-2'>{request.name}</Text>
-  </View>
-)
+const RequestItem: React.FC<RequestItemProps> = ({ request }) => {
+  const router = useRouter()
+  const { tabs, addTab } = useTabStore()
+
+  const handlePress = () => {
+    const newTab = {
+      id: request.id,
+      requestId: request.id,
+      name: request.name,
+      method: request.method
+    }
+    const existingTab = tabs.find(tab => tab.id === request.id);
+    if(!existingTab) {
+      addTab(newTab) 
+    }
+    router.navigate(`/(drawer)/request/${request.id}`)
+  }
+
+  return (
+    <Button 
+      variant='ghost' 
+      className="flex-row items-center py-1"
+      onPress={handlePress}
+    >
+      <Tag method={request.method as HttpMethod} />
+      <Text className='text-lg ml-2'>{request.name}</Text>
+    </Button>
+  )
+}
 
 export default RequestItem

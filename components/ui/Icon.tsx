@@ -21,7 +21,7 @@ export const IconProvider = ({
 export const useIconContext = () => useContext(IconContext);
 
 // Wrapper cho icon, ví dụ cho AntDesign
-import { useThemeColors } from "@/hooks/theme/useThemeColors";
+import { useThemeColors } from "@/hooks/useThemeColors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 export type IconProps = React.ComponentProps<typeof AntDesign> & {

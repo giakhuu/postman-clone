@@ -1,6 +1,6 @@
 import { Icon, Text } from '@/components/ui'
 import Divider from '@/components/ui/Divider'
-import { useThemeColors } from '@/hooks/theme/useThemeColors'
+import { useThemeColors } from '@/hooks/useThemeColors'
 import React from 'react'
 import { View } from 'react-native'
 import { CollectionType } from './CollectionList'

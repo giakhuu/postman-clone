@@ -1,4 +1,4 @@
-import { useThemeColors } from "@/hooks/theme/useThemeColors";
+import { useThemeColors } from "@/hooks/useThemeColors";
 import React, { useRef } from "react";
 import { Animated, Pressable } from "react-native";
 import { twMerge } from "tailwind-merge";

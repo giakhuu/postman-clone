@@ -1,11 +1,12 @@
 import { Button, Icon, Text } from '@/components/ui'
-import { useThemeColors } from '@/hooks/theme/useThemeColors'
+import { useThemeColors } from '@/hooks/useThemeColors'
 import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
 import React from 'react'
 import { View } from 'react-native'
 
 import CollectionList from '@/components/molecules/CollectionDrawer/CollectionList'
 import type { IconProps } from '@/components/ui/Icon'
+import { exampleRequests } from '@/model/request/exampleRequest'
 import { useTranslation } from 'react-i18next'
 
 type NavItem = {
@@ -29,8 +30,8 @@ const sampleCollections = [
         id: 'f1',
         name: 'First folder inside collection',
         requests: [
-          { id: 'r1', name: 'Request 1', method: 'GET' },
-          { id: 'r2', name: 'Request 2', method: 'POST' },
+          exampleRequests[0],
+          exampleRequests[1],
         ],
       },
       {
@@ -48,8 +49,8 @@ const sampleCollections = [
         id: 'f1',
         name: 'First folder inside collection',
         requests: [
-          { id: 'r1', name: 'Request 1', method: 'GET' },
-          { id: 'r2', name: 'Request 2', method: 'POST' },
+          exampleRequests[2],
+          exampleRequests[3],
         ],
       },
       {

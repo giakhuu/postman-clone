@@ -1,5 +1,5 @@
 import { Icon, Text } from "@/components/ui";
-import { useThemeColors } from "@/hooks/theme/useThemeColors";
+import { useThemeColors } from "@/hooks/useThemeColors";
 import { View } from "react-native";
 
 type QuickTipProps = {

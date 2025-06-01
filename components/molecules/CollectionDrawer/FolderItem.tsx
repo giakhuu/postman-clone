@@ -1,5 +1,5 @@
 import { Button, Icon, Text } from '@/components/ui'
-import { useThemeColors } from '@/hooks/theme/useThemeColors'
+import { useThemeColors } from '@/hooks/useThemeColors'
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { FolderType } from './CollectionList'

@@ -1,16 +1,13 @@
 import { Button, Icon, Text } from '@/components/ui'
+import { HttpRequest } from '@/model/request/Request'
 import React from 'react'
 import { View } from 'react-native'
 import CollectionItem from './CollectionItem'
-export type RequestType = {
-  id: string
-  name: string
-  method: string
-}
+
 export type FolderType = {
   id: string
   name: string
-  requests: RequestType[]
+  requests: HttpRequest[]
 }
 export type CollectionType = {
   id: string
