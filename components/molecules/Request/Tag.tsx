@@ -8,9 +8,12 @@ import { twMerge } from 'tailwind-merge';
 interface TagProps {
   method: HttpMethod;
   className?: string;
+  variant?: 'default' | 'noBackground';
 }
 
-const Tag: React.FC<TagProps> = ({ method, className = "" }) => {
+
+
+const Tag: React.FC<TagProps> = ({ method, className = "", variant = 'default' }) => {
   const color = getMethodColor(method);
 
   return (

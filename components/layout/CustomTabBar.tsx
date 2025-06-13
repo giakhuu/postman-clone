@@ -38,7 +38,7 @@ export const CustomTabBar = memo(() => {
               <Tag method={tab.method} className='mx-2' ></Tag>
               <Text
                 className={`
-                  ${isFocused ? 'text-primary font-semibold' : 'text-muted-foreground font-normal'}
+                  ${isFocused ? 'text-secondary-foreground font-semibold' : 'text-primary font-normal'}
                 `}
               >
                 {tab.name}

@@ -35,7 +35,7 @@ const RequestItem: React.FC<RequestItemProps> = ({ request }) => {
       onPress={handlePress}
     >
       <Tag method={request.method as HttpMethod} />
-      <Text className='text-lg ml-2'>{request.name}</Text>
+      <Text className='text-lg ml-2 text-secondary-foreground'>{request.name}</Text>
     </Button>
   )
 }

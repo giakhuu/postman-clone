@@ -16,7 +16,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> & {
 
 
 
-const baseButtonClass = "rounded"
+const baseButtonClass = "rounded flex-row items-center overflow-hidden";
 const baseTextClass = "text-background"
 
 const sizeStyles = {

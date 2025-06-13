@@ -70,7 +70,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
 
 
   return (
-    <View className='pt-12 flex-1 w-50'>
+    <View className='bg-background pt-12 flex-1 w-50 '>
       <Text className='text-3xl font-bold px-4'>{tCommon("appName")}</Text>
       <DrawerContentScrollView
         {...props}

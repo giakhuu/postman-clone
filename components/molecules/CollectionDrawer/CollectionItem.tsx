@@ -17,7 +17,7 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ collection }) => {
         <View className="mb-2 bg-secondary rounded-lg p-4 shadow-sm border border-muted">
             <View className='flex-row'>
                 <Icon name={'folder1'} className='pl-2 pr-4' color={colors.mutedForeground}/>
-                <Text className="font-semibold mb-1">{collection.name}</Text>
+                <Text className="font-semibold mb-1 text-secondary-foreground">{collection.name}</Text>
             </View>
             
             <Divider/>
