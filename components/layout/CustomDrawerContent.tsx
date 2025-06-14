@@ -4,7 +4,7 @@ import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItem } from
 import React from 'react'
 import { View } from 'react-native'
 
-import CollectionList from '@/components/molecules/CollectionDrawer/CollectionList'
+import CollectionList from '@/components/organism/CollectionDrawer/CollectionList'
 import type { IconProps } from '@/components/ui/Icon'
 import { exampleRequests } from '@/model/request/exampleRequest'
 import { useTranslation } from 'react-i18next'

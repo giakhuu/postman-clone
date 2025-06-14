@@ -11,7 +11,7 @@ export const CustomTabBar = memo(() => {
   const colors = useThemeColors();
   const router = useRouter();
   return (
-    <View className="bg-background border-b border-border">
+    <View className="bg-secondary">
       <ScrollView 
         horizontal 
         showsHorizontalScrollIndicator={false}
@@ -31,8 +31,8 @@ export const CustomTabBar = memo(() => {
                 router.navigate(`/(drawer)/request/${tab.requestId}`)
               }}
               className={`
-                flex-row items-center mx-1 px-3 py-1.5 rounded-md
-                ${isFocused ? 'bg-secondary border border-border' : 'border border-transparent'}
+                flex-row items-center px-3 py-1.5 rounded-t-md h-full
+                ${isFocused ? 'bg-background border border-border border-b-0' : 'bg-secondary border border-transparent'}
               `}
             >
               <Tag method={tab.method} className='mx-2' ></Tag>
