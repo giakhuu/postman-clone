@@ -1,3 +1,4 @@
+import { useThemeColors } from '@/hooks/useThemeColors';
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -17,12 +18,14 @@ export const Input : React.FC<InputProps> = ({
     className = '',
 }) => {
     const [text, setText] = useState('');
+    const colors = useThemeColors();
     return (
         <View className={twMerge('rounded border border-border ', className)}>
             <TextInput
                 placeholder={placeholder}
                 value={text}
                 onChangeText={setText}
+                placeholderTextColor={colors.mutedForeground}
             />
         </View>
     );

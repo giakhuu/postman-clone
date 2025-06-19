@@ -8,7 +8,7 @@ import AppStack from "@/components/AppStack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function Layout() {
     const [fontsLoaded] = useFonts({
-        'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
+        'Roboto-Regular': require('../assets/fonts/Roboto_Condensed-Regular.ttf'),
     });
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>

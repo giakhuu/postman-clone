@@ -16,6 +16,8 @@ export const lightColors = {
   border: 'rgb(235,235,235)',
   input: 'rgb(212,212,212)',
   ring: 'rgb(235,235,235)',
+  accent: 'rgb(230,230,230)',
+  accentForeground: 'rgb(80,80,80)',
 };
 
 export const darkColors = {
@@ -34,4 +36,6 @@ export const darkColors = {
   border: 'rgb(59,59,59)',
   input: 'rgb(71,71,71)',
   ring: 'rgb(59,59,59)',
+  accent: 'rgb(249,249,249)',
+  accentForeground: 'rgb(120,120,120)',
 };

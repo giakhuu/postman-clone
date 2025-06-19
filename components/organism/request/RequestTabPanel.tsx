@@ -1,7 +1,7 @@
 import { Text } from '@/components/ui';
 import React, { useState } from 'react';
 import { ScrollView, TouchableWithoutFeedback, View } from 'react-native';
-import { RequestAuthTabContent } from './tab/RequestAuthTabContent/RequestAuthTabContent';
+import RequestBodyTabContent from './tab/RequestBodyTabContent/RequestBodyTabContent';
 
 const requestTabs = {
   Params:   { label: "Params" },
@@ -26,7 +26,7 @@ const RequestTabPanel: React.FC = () => {
                 {Object.values(requestTabs).map((tab, index) => (
                 <TouchableWithoutFeedback key={index} onPress={() => setActiveTab(tab)}>
                     <View className={`px-2 py-2 rounded ${tab === activeTab ? 'bg-background' : 'bg-transparent'}`}>
-                    <Text className="text-accent-foreground">{tab.label}</Text>
+                    <Text className={tab === activeTab ? 'text-primary' : 'text-accent-foreground'}>{tab.label}</Text>
                     </View>
                 </TouchableWithoutFeedback>
                 ))}
@@ -34,7 +34,7 @@ const RequestTabPanel: React.FC = () => {
         </View>
         {/* Nội dung tab sẽ render ở đây */}
         <View className="py-4">
-            <RequestAuthTabContent />
+            <RequestBodyTabContent />
         </View>
     </View>
   );
