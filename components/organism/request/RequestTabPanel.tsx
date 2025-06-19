@@ -16,7 +16,7 @@ const requestTabs = {
 const RequestTabPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState(requestTabs.Headers);
   return (
-    <View className="">
+    <View className="flex-1">
         <View className="bg-accent mt-2 rounded-lg">
             <ScrollView
                 horizontal
@@ -33,7 +33,7 @@ const RequestTabPanel: React.FC = () => {
             </ScrollView>
         </View>
         {/* Nội dung tab sẽ render ở đây */}
-        <View className="py-4">
+        <View className="py-4 flex-1">
             <RequestBodyTabContent />
         </View>
     </View>
