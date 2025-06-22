@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { View } from 'react-native'
 
 import { QuickTip } from '@/components/molecules/Tips/QuickTip'
+import { ActionGrid } from '@/components/organism/Home/ActionGrid'
 import { Button, Icon, Text } from '@/components/ui'
 
 const actions = [
@@ -59,45 +60,5 @@ const index = () => {
   )
 }
 
-type ActionTittleProps = {
-    icon: React.ReactNode;
-    label: string;
-    onPress: () => void;
-}
-
-type ActionGridProps = {
-  actions: ActionTittleProps[];
-};
-
-export function ActionGrid({ actions }: ActionGridProps) {
-  return (
-    <View className="flex-row flex-wrap -mx-2 my-2">
-      {actions.map((item, index) => (
-        <View key={index} className="w-1/2 p-2">
-          <ActionTitle
-            icon={item.icon}
-            label={item.label}
-            onPress={item.onPress}
-          />
-        </View>
-      ))}
-    </View>
-  );
-}
-
-export const ActionTitle: React.FC<ActionTittleProps> = ({ icon, label, onPress }) => {
-    return (
-        <Button
-            onPress={onPress}
-            variant="outline"
-            className="w-full flex-col items-center justify-center shadow-lg"
-        >
-            <View className="m-4">
-                {icon}
-            </View>
-            <Text className="font-semibold text-lg">{label}</Text>
-        </Button>
-    );
-}
 
 export default index

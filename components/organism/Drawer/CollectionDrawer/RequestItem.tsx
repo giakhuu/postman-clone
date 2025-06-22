@@ -4,7 +4,7 @@ import { HttpMethod } from '@/lib/enum/HttpMethod';
 import { HttpRequest } from '@/model/request/Request';
 import { useRouter } from 'expo-router'; // Thêm dòng này
 import React from 'react';
-import Tag from '../../molecules/Request/Tag';
+import Tag from '../../../molecules/Request/Tag';
 
 interface RequestItemProps {
   request: HttpRequest

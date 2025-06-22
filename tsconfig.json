@@ -14,5 +14,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "components/organism/request/tab/RequestAuthTabContent"  ]
+, "components/organism/Request/tab/RequestAuthTabContent"  ]
 }

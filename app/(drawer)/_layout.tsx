@@ -1,5 +1,6 @@
 
-import { CustomDrawerContent, HeaderRight } from '@/components/layout';
+import HeaderRight from '@/components/molecules/HeaderRight';
+import CustomDrawerContent from '@/components/organism/Drawer/CustomDrawerContent';
 import { Icon } from '@/components/ui';
 import { useThemeColors } from '@/hooks/useThemeColors';
 import Drawer from 'expo-router/drawer';
@@ -32,6 +33,12 @@ const Layout = () => {
             name="request/index"
             options={{
                 title: 'Requests',
+            }}
+        />
+        <Drawer.Screen
+            name="testThingScreen/index"
+            options={{
+                title: 'Test Thing',
             }}
         />
     </Drawer>

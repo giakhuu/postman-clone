@@ -1,13 +1,13 @@
 import { Button, Icon, Text } from '@/components/ui'
 import { useThemeColors } from '@/hooks/useThemeColors'
+import { Folder } from '@/model/folder/Folder'
 import React, { useState } from 'react'
 import { View } from 'react-native'
-import { FolderType } from './CollectionList'
 import RequestItem from './RequestItem'
 
 
 interface FolderItemProps {
-  folder: FolderType
+  folder: Folder
 }
 
 const FolderItem: React.FC<FolderItemProps> = ({ folder }) => {

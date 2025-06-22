@@ -4,7 +4,7 @@ import { useThemeColors } from '@/hooks/useThemeColors';
 import { useRouter } from 'expo-router';
 import React, { memo } from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
-import Tag from '../molecules/Request/Tag';
+import Tag from '../../molecules/Request/Tag';
 
 export const CustomTabBar = memo(() => {
   const { tabs, activeTabId, removeTab, setActiveTab } = useTabStore();

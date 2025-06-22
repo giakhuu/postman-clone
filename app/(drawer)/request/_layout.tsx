@@ -1,4 +1,4 @@
-import { CustomTabBar } from '@/components/layout/CustomTabBar';
+import { CustomTabBar } from '@/components/organism/Request/CustomTabBar';
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 

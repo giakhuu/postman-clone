@@ -4,9 +4,10 @@ import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItem } from
 import React from 'react'
 import { View } from 'react-native'
 
-import CollectionList from '@/components/organism/CollectionDrawer/CollectionList'
+import CollectionList from '@/components/organism/Drawer/CollectionDrawer/CollectionList'
 import type { IconProps } from '@/components/ui/Icon'
-import { exampleRequests } from '@/model/request/exampleRequest'
+import { useCollectionStorage } from '@/hooks/useCollectionStorage'
+import { useRouter } from 'expo-router'
 import { useTranslation } from 'react-i18next'
 
 type NavItem = {
@@ -16,51 +17,11 @@ type NavItem = {
 }
 
 const navigationItems: NavItem[] = [
-  { label: 'evironment', iconName: 'setting', routeName: 'environment/index' },
+  { label: 'evironment', iconName: 'setting', routeName: 'testThingScreen/index' },
   { label: 'history',     iconName: 'clockcircleo',   routeName: 'history/index' },
   { label: 'API',    iconName: 'earth',     routeName: 'settings/index' },
 ]
 
-const sampleCollections = [
-  {
-    id: '1',
-    name: 'My first collection',
-    folders: [
-      {
-        id: 'f1',
-        name: 'First folder inside collection',
-        requests: [
-          exampleRequests[0],
-          exampleRequests[1],
-        ],
-      },
-      {
-        id: 'f2',
-        name: 'Second folder inside collection',
-        requests: [],
-      },
-    ],
-  },
-  {
-    id: '2',
-    name: 'My second collection',
-    folders: [
-      {
-        id: 'f1',
-        name: 'First folder inside collection',
-        requests: [
-          exampleRequests[2],
-          exampleRequests[3],
-        ],
-      },
-      {
-        id: 'f2',
-        name: 'Second folder inside collection',
-        requests: [],
-      },
-    ],
-  },
-]
 
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => {
@@ -68,7 +29,8 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
   const { t: tDrawer } = useTranslation('drawer')
   const { t: tCommon } = useTranslation('common') 
 
-
+  const { collections } = useCollectionStorage()
+  
   return (
     <View className='bg-background pt-12 flex-1 w-50 '>
       <Text className='text-3xl font-bold px-4'>{tCommon("appName")}</Text>
@@ -94,7 +56,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
 
           <Text className='my-4 text-muted-foreground text-lg font-semibold text-2xl'>{tDrawer("section.collection")}</Text>
           <CollectionList
-            collections={sampleCollections}
+            collections={collections}
           />
 
           <Text className='my-4 text-muted-foreground text-lg font-semibold text-2xl'>{tDrawer("section.navigation")}</Text>
@@ -104,7 +66,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
               key={item.routeName}
               label={tDrawer(`navigation.${item.label}`)}
               iconName={item.iconName}
-              onPress={() => console.log(item.routeName)}
+              routeName={item.routeName}
             />
           ))}
           
@@ -113,24 +75,25 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
     </View>
   )
 }
-
 type NavButtonProps = {
   label: string
   iconName: IconProps['name']
-  onPress: () => void
+  routeName: string
 }
 
-const NavButton: React.FC<NavButtonProps> = ({ label, iconName, onPress }) => {
+const NavButton: React.FC<NavButtonProps> = ({ label, iconName, routeName }) => {
   const colors = useThemeColors()
-  
+  const router = useRouter()
   return (
       <Button
         variant="ghost"
         className="flex-row items-center w-full justify-start px-4 py-2"
-        onPress={onPress}
+        onPress={() => {
+          router.navigate(`/(drawer)/testThingScreen`)
+        }}
         size='lg'
       >
-        <Icon name={iconName} className="mx-4" size={20} color={colors.mutedForeground} />
+        <Icon name={iconName} className="mx-4" size={20} />
         <Text className="ml-2 text-base font-medium">{label}</Text>
       </Button>
     )
