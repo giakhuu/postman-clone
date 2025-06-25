@@ -7,7 +7,7 @@ import { View } from 'react-native'
 import CollectionList from '@/components/organism/Drawer/CollectionDrawer/CollectionList'
 import type { IconProps } from '@/components/ui/Icon'
 import { useCollectionStorage } from '@/hooks/useCollectionStorage'
-import { useRouter } from 'expo-router'
+import { useFocusEffect, useRouter } from 'expo-router'
 import { useTranslation } from 'react-i18next'
 
 type NavItem = {
@@ -29,8 +29,14 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
   const { t: tDrawer } = useTranslation('drawer')
   const { t: tCommon } = useTranslation('common') 
 
-  const { collections } = useCollectionStorage()
-  
+  const { collections, loadAllCollections } = useCollectionStorage()
+
+  useFocusEffect(
+    React.useCallback(() => {
+      loadAllCollections();
+    }, [loadAllCollections])
+  );
+
   return (
     <View className='bg-background pt-12 flex-1 w-50 '>
       <Text className='text-3xl font-bold px-4'>{tCommon("appName")}</Text>

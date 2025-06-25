@@ -1,8 +1,8 @@
-import { loadAllCollections, loadCollection, saveCollection } from '@/lib/collection/storage';
+import { CollectionStorage as CollectionStorageApi } from '@/data/CollectionStorage';
 import { Collection } from '@/model/collection/Collection';
 import { create } from 'zustand';
 
-export interface CollectionStorage {
+export interface CollectionStorageState {
   collections: Collection[];
   addCollection: (collection: Collection) => Promise<void>;
   removeCollection: (id: string) => Promise<void>;
@@ -10,25 +10,28 @@ export interface CollectionStorage {
   loadAllCollections: () => Promise<Collection[]>;
 }
 
-export const useCollectionStorage = create<CollectionStorage>((set, get) => ({
+export const useCollectionStorage = create<CollectionStorageState>((set, get) => ({
   collections: [],
   addCollection: async (collection: Collection) => {
-    await saveCollection(collection);
-    const collections = await loadAllCollections();
+    await CollectionStorageApi.addCollection(collection);
+    const collections = await CollectionStorageApi.loadAllCollection();
     set({ collections });
+
   },
   removeCollection: async (id: string) => {
-    // Implement remove logic in storage.ts if needed
-    // await removeCollection(id);
-    // const collections = await loadAllCollections();
-    // set({ collections });
+    // await LibCollectionStorage.remove(id);
+    // set(state => ({
+    //   collections: state.collections.filter(col => col.id !== id)
+    // }));
   },
   loadCollection: async (id: string) => {
-    return await loadCollection(id);
+    // return await LibCollectionStorage.load(id);
+    return null;
   },
   loadAllCollections: async () => {
-    const collections = await loadAllCollections();
+    const collections = await CollectionStorageApi.loadAllCollection();
     set({ collections });
     return collections;
   },
+  
 }));

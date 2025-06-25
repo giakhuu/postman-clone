@@ -1,19 +1,15 @@
 import { Button, Input, Text } from '@/components/ui';
 import Dropdown, { DropdownHandle } from '@/components/ui/Dropdown';
 import { useCollectionStorage } from '@/hooks/useCollectionStorage';
+import { useRequestStorage } from '@/hooks/useRequestStorage';
 import { Collection } from '@/model/collection/Collection';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Pressable, View } from 'react-native';
 
 const index = () => {
     const [id, setId] = useState('');
     const [message, setMessage] = useState('');
-    const { collections, loadAllCollections } = useCollectionStorage();
-
-    useEffect(() => {
-        loadAllCollections();
-    }, []);
+    const { collections, loadAllCollections, removeCollection } = useCollectionStorage();
 
     const handleDelete = async () => {
         if (!id) {
@@ -21,7 +17,7 @@ const index = () => {
         return;
         }
         try {
-        await AsyncStorage.removeItem(`collection_${id}`);
+        await removeCollection(id);
         setMessage(`Deleted collection with id: ${id}`);
         setId('');
         } catch (e) {
@@ -30,8 +26,20 @@ const index = () => {
     };
 
     const handleShowAll = () => {
+        console.log("testThing: showAll")
+        loadAllCollections()
         printCollections(collections);
     };
+
+    const {requests, loadAllRequest, removeAllRequest} = useRequestStorage()
+
+    const handleshowAllRequest = () => {
+      loadAllRequest()
+    }
+
+    const handleDeleteAllRequest = () => {
+      removeAllRequest()
+    }
 
 
     return (
@@ -51,11 +59,26 @@ const index = () => {
             <Text>Delete</Text>
         </Button>
 
+           <Button
+            className="w-full my-2"
+            variant="destructive"
+            onPress={handleDeleteAllRequest}
+        >
+            <Text>DeleteAllRequest</Text>
+        </Button>
+
         <Button
             className="w-full my-2"
             onPress={handleShowAll}
         >
             <Text>ShowAllCollection</Text>
+        </Button>
+
+        <Button
+            className="w-full my-2"
+            onPress={handleshowAllRequest}
+        >
+            <Text>ShowAllRequest</Text>
         </Button>
         {message ? <Text className="mt-4 text-center">{message}</Text> : null}
 
@@ -123,6 +146,5 @@ function DropDownTest() {
     </View>
   );
 }
-
 
 export default index;

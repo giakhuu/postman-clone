@@ -1,5 +1,7 @@
 // src/models/request/Url.ts
-import { KeyValue } from './KeyValue';
+
+import { KeyValuePair } from "../KeyValuePair";
+
 
 export class Url {
   constructor(
@@ -8,12 +10,12 @@ export class Url {
     public host: string[],
     public port: string,
     public path: string[],
-    public query: KeyValue[]
+    public query: KeyValuePair[]
   ) {}
 
   get full(): string {
     const base = `${this.protocol}://${this.host.join('.')}:${this.port}/${this.path.join('/')}`;
-    const q = this.query.map(q => `${q.key}=${q.value}`).join('&');
+    const q = this.query.map(q => `${q.keyName}=${q.keyValue}`).join('&');
     return `${base}?${q}`;
   }
 }

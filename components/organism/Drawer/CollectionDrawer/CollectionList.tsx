@@ -1,4 +1,3 @@
-import { printCollections } from '@/app/(drawer)/testThingScreen'
 import { Button, Icon, Text } from '@/components/ui'
 import { useCollectionStorage } from '@/hooks/useCollectionStorage'
 import { Collection } from '@/model/collection/Collection'
@@ -14,10 +13,10 @@ type CollectionListProps = {
 
 
 const CollectionList: React.FC<CollectionListProps> = ({ collections }) => {
-  printCollections(collections)
   const { addCollection } = useCollectionStorage()
   const handleAddCollection = () => {
     const newCollection = new Collection(Date.now().toString(), 'New Collection')
+    console.log("CollectionList: add item")
     addCollection(newCollection)
   }
   return (
