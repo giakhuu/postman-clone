@@ -1,4 +1,5 @@
 import Dropdown, { DropdownHandle } from '@/components/molecules/Dropdown/Dropdown'
+import TextToInput, { TextToInputHandle } from '@/components/molecules/TextToInput/TextToInput'
 import { Button, Icon, Text } from '@/components/ui'
 import Divider from '@/components/ui/Divider'
 import { useCollectionStorage } from '@/hooks/useCollectionStorage'
@@ -22,8 +23,13 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ collection }) => {
     const colors = useThemeColors()
     const [collectionState, setCollection] = useState<Collection>(collection)
     const { addRequest} = useRequestStorage()
-    const { loadCollection } = useCollectionStorage()
+    const { loadCollection, updateCollection } = useCollectionStorage()
     const { addFolder } = useFolderStorage()
+
+    const dropdownRef = useRef<DropdownHandle>(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const textToInputRef = useRef<TextToInputHandle>(null);
+
     const handdleAddRequest = async () => {
         await addRequest(new HttpRequest(Date.now().toString(), "New Request", HttpMethod.GET, collection.id));
         const newCollection = await loadCollection(collection.id);
@@ -40,28 +46,66 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ collection }) => {
         }
     };
 
-    const dropdownRef = useRef<DropdownHandle>(null);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const handleRenameRequest = () => {
+        textToInputRef.current?.startEditing()
+    }
+    const handleRenameSave = (newName: string) => {
+        collection.name = newName
+        updateCollection(collection)
+    }
+    const dropdownButton = [
+        {
+            label: "Add Request",
+            onPress: handdleAddRequest
+        },
+        {
+            label: "Add Folder",
+            onPress: handdleAddRequest
+        },
+        {
+            label: "Delete",
+            onPress: handdleAddRequest
+        },
+        {
+            label: "Rename",
+            onPress: handleRenameRequest
+        }
+    ]
+
+
+
     return (
         <View className="mb-2 bg-secondary rounded-lg p-4 shadow-sm border border-muted" style={{ zIndex: isDropdownOpen ? 9999 : 1 }}>
             <View className='flex-row items-center'>
                 <Icon name={'folder1'} className='pl-2 pr-4' color={colors.mutedForeground}/>
-                <Text className="font-semibold mb-1 text-secondary-foreground flex-1">{collection.name}</Text>
+                <TextToInput 
+                    textClassName="font-semibold mb-1 text-secondary-foreground flex-1"
+                    initial={collection.name}
+                    onSave={(v) => {handleRenameSave(v)}}
+                    inputClassName="flex-1"
+                    ref={textToInputRef}
+                />
+                
                 <Dropdown
                     ref={dropdownRef}
                     onOpen={() => setIsDropdownOpen(!isDropdownOpen)}
                     onClose={() => setIsDropdownOpen(!isDropdownOpen)}
-                    dropdownClassName='min-w-[240]'
+                    dropdownClassName='min-w-[160]'
                     trigger={(open) => (
-                        <Icon name="plus" className="ml-auto" color={colors.mutedForeground} />
+                        <Icon name="ellipsis1" className="item" color={colors.mutedForeground} />
                     )}
                 >
-                    <Button variant='ghost' onPress={handdleAddFolder} >
-                        <Text>Add Folder</Text>
-                    </Button>
-                    <Button variant='ghost' onPress={handdleAddRequest}>
-                        <Text>Add Request</Text>
-                    </Button>
+                    {dropdownButton.map((button, idx) => {
+                        return (
+                            <Button
+                                key={button.label}
+                                onPress={button.onPress}
+                                variant="ghost"
+                            >
+                                <Text>{button.label}</Text>
+                            </Button>
+                        )
+                    })}
                 </Dropdown>
             </View>
             

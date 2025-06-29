@@ -1,25 +1,33 @@
 import { CustomTabBar } from '@/components/organism/Request/CustomTabBar';
 import { useTabStore } from '@/hooks/useTabStore';
-import React from 'react';
+import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { View } from 'react-native';
 
-const index = () => {
-  const {tabs, activeTabId} = useTabStore()
+const RequestIndex = () => {
+  const router = useRouter();
+  const { tabs, activeTabId } = useTabStore();
+
+  useEffect(() => {
+    if (tabs.length === 0) {
+      router.navigate("/(drawer)/home");
+    }
+  }, [tabs.length, router]);
+
   return (
     <View className="flex-1">
-      <CustomTabBar /> 
+      <CustomTabBar />
       {tabs.map(tab => (
-          <View
-            key={tab.id}
-            style={[{ display: tab.id === activeTabId ? 'flex' : 'none' }]}
-            className='flex-1'
-            
-          >
-            {tab.content}
-          </View>
-        ))}
+        <View
+          key={tab.id}
+          style={{ display: tab.id === activeTabId ? 'flex' : 'none' }}
+          className='flex-1'
+        >
+          {tab.content}
+        </View>
+      ))}
     </View>
   );
-}
+};
 
-export default index
+export default RequestIndex;

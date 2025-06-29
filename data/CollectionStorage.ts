@@ -70,4 +70,21 @@ export class CollectionStorage {
       throw error;
     }
   }
+
+  /**
+ * Cập nhật thông tin một collection theo id.
+ */
+  static updateCollection(collection: Collection): Promise<void> {
+    return new Promise((resolve, reject) => {
+      try {
+        db.execSync(
+          `UPDATE collections SET name = '${collection.name}', description = '${collection.description}' WHERE id = '${collection.id}';`
+        );
+        resolve();
+      } catch (error) {
+        console.error('Error updating collection:', error);
+        reject(error);
+      }
+    });
+  }
 }

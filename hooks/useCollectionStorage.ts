@@ -8,6 +8,7 @@ export interface CollectionStorageState {
   removeCollection: (id: string) => Promise<void>;
   loadCollection: (id: string) => Promise<Collection | null>;
   loadAllCollections: () => Promise<Collection[]>;
+  updateCollection: (collection: Collection) => Promise<void>
 }
 
 export const useCollectionStorage = create<CollectionStorageState>((set, get) => ({
@@ -33,5 +34,7 @@ export const useCollectionStorage = create<CollectionStorageState>((set, get) =>
     set({ collections });
     return collections;
   },
-  
+  updateCollection: async (collection: Collection) => {
+    await CollectionStorageApi.updateCollection(collection);
+  }
 }));
