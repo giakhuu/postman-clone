@@ -16,7 +16,6 @@ const CollectionList: React.FC<CollectionListProps> = ({ collections }) => {
   const { addCollection } = useCollectionStorage()
   const handleAddCollection = () => {
     const newCollection = new Collection(Date.now().toString(), 'New Collection')
-    console.log("CollectionList: add item")
     addCollection(newCollection)
   }
   return (

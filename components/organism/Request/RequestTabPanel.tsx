@@ -1,7 +1,13 @@
 import { Text } from '@/components/ui';
+import { HttpRequest } from '@/model/request/Request';
 import React, { useState } from 'react';
 import { ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import RequestBodyTabContent from './tab/RequestBodyTabContent/RequestBodyTabContent';
+
+
+interface RequestTabPanelProps {
+  request: HttpRequest
+}
 
 const requestTabs = {
   Params:   { label: "Params" },
@@ -13,7 +19,7 @@ const requestTabs = {
   Cookies:  { label: "Cookies" }
 };
 
-const RequestTabPanel: React.FC = () => {
+const RequestTabPanel: React.FC<RequestTabPanelProps> = ({request}) => {
   const [activeTab, setActiveTab] = useState(requestTabs.Headers);
   return (
     <View className="flex-1">

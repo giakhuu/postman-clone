@@ -8,6 +8,7 @@ export interface RequestStorage {
   loadRequestsInFolder:(folderId: string) => Promise<HttpRequest[]>
   loadAllRequest: () => Promise<HttpRequest[]>
   removeAllRequest: () => Promise<void>
+  loadRequest: (id: string) => Promise<HttpRequest | null>
 }
 
 export const useRequestStorage = create<RequestStorage>((set, get) => ({
@@ -43,5 +44,10 @@ export const useRequestStorage = create<RequestStorage>((set, get) => ({
 
   removeAllRequest: async() => {
     await LibRequestStorage.removeAllRequests()
+  },
+
+  loadRequest: async(id: string) : Promise<HttpRequest | null> => {
+    const result = await LibRequestStorage.loadRequest(id)
+    return result
   }
 }));

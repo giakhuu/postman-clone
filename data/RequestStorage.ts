@@ -1,15 +1,25 @@
-import { HttpRequestsSchema } from '@/lib/zod/HttpRequestSchema';
+import { HttpRequestSchema, HttpRequestsSchema } from '@/lib/zod/HttpRequestSchema';
 import { HttpRequest } from '@/model/request/Request';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabaseSync('postman.db');
 export class RequestStorage {
+    static loadRequest(id: string): HttpRequest | null {
+        try {
+            const result = db.getFirstSync('SELECT * FROM requests WHERE id = ?;', [id]);
+            const requests = HttpRequestSchema.parse(result);
+            return requests;
+        } catch (e) {
+            console.error('Error loading requests:', e);
+            return null;
+        } 
+    }
+
     static loadRequestsInCollection(collectionId: string): HttpRequest[] {
         const rows = db.getAllSync(
             `SELECT * FROM requests WHERE collectionId = ?;`,
             [collectionId]
         );
-        console.log(`RequestStorage: ${rows}`)
         return HttpRequestsSchema.parse(rows)
     }
 
@@ -24,7 +34,6 @@ export class RequestStorage {
     static loadAllRequest() {
         try {
             const result = db.getAllSync('SELECT * FROM requests;');
-            console.log(result);
             const requests = HttpRequestsSchema.parse(result);
             return requests;
         } catch (e) {

@@ -88,7 +88,6 @@ type NavButtonProps = {
 }
 
 const NavButton: React.FC<NavButtonProps> = ({ label, iconName, routeName }) => {
-  const colors = useThemeColors()
   const router = useRouter()
   return (
       <Button

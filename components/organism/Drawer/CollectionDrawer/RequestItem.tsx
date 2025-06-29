@@ -5,6 +5,7 @@ import { HttpRequest } from '@/model/request/Request';
 import { useRouter } from 'expo-router'; // Thêm dòng này
 import React from 'react';
 import Tag from '../../../molecules/Request/Tag';
+import RequestScreen from '../../Request/RequestScreen';
 
 interface RequestItemProps {
   request: HttpRequest
@@ -12,20 +13,18 @@ interface RequestItemProps {
 
 const RequestItem: React.FC<RequestItemProps> = ({ request }) => {
   const router = useRouter()
-  const { tabs, addTab } = useTabStore()
+  const { addTab } = useTabStore()
 
   const handlePress = () => {
     const newTab = {
       id: request.id,
       requestId: request.id,
       name: request.name,
-      method: request.method
-    }
-    const existingTab = tabs.find(tab => tab.id === request.id);
-    if(!existingTab) {
-      addTab(newTab) 
-    }
-    router.navigate(`/(drawer)/request/${request.id}`)
+      method: request.method,
+      content: <RequestScreen></RequestScreen>
+    };
+    addTab(newTab, request);
+    router.navigate(`/(drawer)/request`)
   }
 
   return (

@@ -7,6 +7,7 @@ import { HttpRequestSchema } from "./HttpRequestSchema";
 export const FolderSchema = z
   .object({
     id:          z.string(),
+    collectionId:z.string(),
     name:        z.string(),
     description: z.string().optional().default(""),
     requests:    HttpRequestSchema.array().optional().default([]),
@@ -15,6 +16,7 @@ export const FolderSchema = z
   .transform((obj) =>
     new Folder(
       obj.id,
+      obj.collectionId,
       obj.name,
       obj.description,
       obj.requests

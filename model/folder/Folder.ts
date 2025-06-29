@@ -3,6 +3,7 @@ import { HttpRequest } from "../request/Request";
 export class Folder {
   constructor(
     public id: string, // Default ID based on timestamp
+    public collectionId: string,
     public name: string, // Default ID based on timestamp
     public description: string = "",
     public requests: HttpRequest[] = []

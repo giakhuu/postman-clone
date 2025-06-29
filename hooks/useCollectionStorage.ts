@@ -25,8 +25,8 @@ export const useCollectionStorage = create<CollectionStorageState>((set, get) =>
     // }));
   },
   loadCollection: async (id: string) => {
-    // return await LibCollectionStorage.load(id);
-    return null;
+    const collection =  await CollectionStorageApi.loadCollection(id)
+    return collection;
   },
   loadAllCollections: async () => {
     const collections = await CollectionStorageApi.loadAllCollection();

@@ -1,5 +1,5 @@
+import Dropdown, { DropdownHandle } from '@/components/molecules/Dropdown/Dropdown';
 import { Button, Input, Text } from '@/components/ui';
-import Dropdown, { DropdownHandle } from '@/components/ui/Dropdown';
 import { useCollectionStorage } from '@/hooks/useCollectionStorage';
 import { useRequestStorage } from '@/hooks/useRequestStorage';
 import { Collection } from '@/model/collection/Collection';
@@ -120,8 +120,6 @@ function DropDownTest() {
         ref={dropdownRef}
         onOpen={() => console.log("opened")}
         onClose={() => console.log("closed")}
-        containerClassName="w-64"
-        dropdownClassName="max-h-60"
         trigger={(open) => (
           <View className="flex-row justify-between items-center border border-gray-400 rounded px-4 py-3 bg-white">
             <Text className="text-gray-800">{value ?? "Chọn mục"}</Text>

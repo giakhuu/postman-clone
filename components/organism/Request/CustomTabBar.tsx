@@ -1,7 +1,6 @@
 import { Icon, Text } from '@/components/ui';
 import { useTabStore } from '@/hooks/useTabStore';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { useRouter } from 'expo-router';
 import React, { memo } from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 import Tag from '../../molecules/Request/Tag';
@@ -9,7 +8,6 @@ import Tag from '../../molecules/Request/Tag';
 export const CustomTabBar = memo(() => {
   const { tabs, activeTabId, removeTab, setActiveTab } = useTabStore();
   const colors = useThemeColors();
-  const router = useRouter();
   return (
     <View className="bg-secondary">
       <ScrollView 
@@ -28,7 +26,6 @@ export const CustomTabBar = memo(() => {
               key={tab.id}
               onPress={() => {
                 setActiveTab(tab.id)
-                router.navigate(`/(drawer)/request/${tab.requestId}`)
               }}
               className={`
                 flex-row items-center px-3 py-1.5 rounded-t-md h-full
